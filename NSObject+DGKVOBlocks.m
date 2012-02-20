@@ -48,7 +48,7 @@ NSString *const DGKVOBlocksObserversAssociatedObjectsKey = @"DGKVOBlocksObserver
 
 @property (copy) DGKVOObserverBlock block;
 @property (copy) NSString *keyPath;
-@property (retain) NSOperationQueue *queue;
+@property  NSOperationQueue *queue;
 
 @end
 
@@ -107,12 +107,12 @@ NSString *const DGKVOBlocksObserversAssociatedObjectsKey = @"DGKVOBlocksObserver
 {
     @synchronized (self) {
         
-       NSMutableArray *setDict = objc_getAssociatedObject(self, DGKVOBlocksObserversAssociatedObjectsKey);
+       NSMutableArray *setDict = objc_getAssociatedObject(self, (void *)DGKVOBlocksObserversAssociatedObjectsKey);
 
         if (setDict == nil) {
             NSMutableArray *newSetDict = [NSMutableArray array];
             
-            objc_setAssociatedObject(self, DGKVOBlocksObserversAssociatedObjectsKey, newSetDict, OBJC_ASSOCIATION_RETAIN);
+            objc_setAssociatedObject(self, (void *)DGKVOBlocksObserversAssociatedObjectsKey, newSetDict, OBJC_ASSOCIATION_RETAIN);
             
             return newSetDict;
         }
