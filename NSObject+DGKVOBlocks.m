@@ -43,12 +43,12 @@ NSString *const DGKVOBlocksObserversAssociatedObjectsKey = @"DGKVOBlocksObserver
 @interface DGKVOBlocksObserver : NSObject {
     DGKVOObserverBlock _block;
     NSString *_keyPath;
-    NSOperationQueue *_queue;
+    NSOperationQueue *__unsafe_unretained _queue;
 }
 
 @property (copy) DGKVOObserverBlock block;
 @property (copy) NSString *keyPath;
-@property  NSOperationQueue *queue;
+@property  (unsafe_unretained) NSOperationQueue *queue;
 
 @end
 
